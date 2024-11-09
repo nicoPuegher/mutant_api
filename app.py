@@ -1,7 +1,12 @@
 from flask import Flask, request, jsonify
+from db.database import Base, engine, get_db
+from db.models import DNASequence
 from dna_analysis.dna_checker import is_mutant
 
 app = Flask(__name__)
+
+# Create tables
+Base.metadata.create_all(bind=engine)
 
 
 @app.route("/mutant/", methods=["POST"])
