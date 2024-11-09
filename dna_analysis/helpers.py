@@ -1,4 +1,4 @@
-from config import SEQUENCE_LENGTH
+from constants import SEQUENCE_LENGTH
 
 
 # Check if there is a sequence of identical characters in the specified direction

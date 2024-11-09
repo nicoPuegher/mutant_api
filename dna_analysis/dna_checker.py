@@ -1,5 +1,5 @@
 from dna_analysis.helpers import has_sequence
-from config import MIN_SEQUENCE_COUNT, SEQUENCE_LENGTH
+from constants import MIN_SEQUENCE_COUNT, SEQUENCE_LENGTH
 
 
 def is_mutant(dna):
