@@ -32,10 +32,10 @@ def mutant():
         db.add(new_dna_record)
         db.commit()
 
-    if is_mutant(dna):
-        return jsonify({"message": "Mutant detected"}), 200
+    if is_dna_mutant:
+        return jsonify({"status": "Mutant detected"}), 200
     else:
-        return jsonify({"message": "Forbidden"}), 403
+        return jsonify({"status": "Not a mutant"}), 403
 
 
 if __name__ == "__main__":
