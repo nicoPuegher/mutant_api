@@ -38,5 +38,21 @@ def mutant():
         return jsonify({"status": "Not a mutant"}), 403
 
 
+@app.route("/stats", methods=["GET"])
+def stats():
+    db = next(get_db())
+    mutant_count = db.query(DNASequence).filter(DNASequence.is_mutant == 1).count()
+    human_count = db.query(DNASequence).filter(DNASequence.is_mutant == 0).count()
+    ratio = round(mutant_count / human_count, 2) if human_count > 0 else 0.0
+
+    return jsonify(
+        {
+            "count_mutant_dna": mutant_count,
+            "count_human_dna": human_count,
+            "ratio": ratio,
+        }
+    )
+
+
 if __name__ == "__main__":
     app.run(debug=True)
